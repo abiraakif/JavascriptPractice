@@ -1,0 +1,131 @@
+<html>
+
+<head>
+    <title>Game</title>
+    <style>
+        body {
+            background-image: url("images/greybackground.jfif");
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #start {
+            color: white;
+            background-color: lightcoral;
+        }
+
+        #go {
+            color: black;
+            background-color: peachpuff;
+        }
+
+        .numberbox {
+            border: 1px;
+            border-style: solid;
+            padding: 3px;
+        }
+
+        #correctanswer {
+            color: green;
+            display: none;
+        }
+
+        #wronganswer {
+            color: red;
+            display: none;
+        }
+
+        #gamesection {
+            display: none;
+        }
+
+        #buttonnext {
+            display: none;
+            color: black;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>A Mathematical Game</h1>
+    <div id="form"></div>
+    <h2>Sign Up</h2>
+    
+        <label >Name:</label>
+        <input type="text" name="firstname"><br>
+    </div>
+    <button id="start" onclick="startgame()">START</button>
+    <hr>
+    <div id="gamesection">
+        <span id="span1" class="numberbox"></span>
+        +
+        <span id="span2" class="numberbox"></span>
+        =
+        <input type="text" id="answer"/>
+
+        <button id="go" onclick="checkanswer()">Check Answer</button><br>
+    </div>
+    <div id="correctanswer">CONGRATULATIONS</div>
+    <div id="wronganswer">YOU ARE WRONG</div>
+    <div id="score"></div>
+    <button id="buttonnext" onclick="restartgame()">Next Sum</button>
+
+    <script>
+
+        let correctanswers = 0;
+        let wronganswers = 0;
+
+        function startgame() {
+            document.getElementById("gamesection").style.display = "block";
+
+            document.getElementById("answer").value = "";
+
+            document.getElementById("span1").innerHTML = getrandomnum();
+            document.getElementById("span2").innerHTML = getrandomnum();
+        }
+
+        function getrandomnum() {
+            let x = Math.random();
+            let a = x * 10;
+            let y = Math.floor(a);
+            return y;
+        }
+
+        function checkanswer() {
+            let useranswer = Number(document.getElementById("answer").value);
+            let a = document.getElementById("span1").innerHTML;
+            let b = document.getElementById("span2").innerHTML;
+            let x = Number(a);
+            let y = Number(b);
+
+            if (x + y == useranswer) {
+                document.getElementById("correctanswer").style.display = "block";
+                document.getElementById("buttonnext").style.display = "block";
+                document.getElementById("wronganswer").style.display = "none";
+                correctanswers++;
+            }
+            else {
+                document.getElementById("wronganswer").style.display = "block";
+                document.getElementById("correctanswer").style.display = "none";
+                wronganswers++;
+            }
+
+            let scorediv = document.getElementById("score");
+            scorediv.innerHTML = "Correct answers: " + correctanswers + "<br />Wrong answers: " + wronganswers;
+        }
+
+        function restartgame() {
+            startgame();
+
+        }
+
+    </script>
+
+</body>
+
+
+</html>
