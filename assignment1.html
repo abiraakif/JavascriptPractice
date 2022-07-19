@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <title>Assignment 1</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Assignment 1</h1>
+
+    <input id="txtName" type="text" name="name" /><br>
+    <button id="showname" onclick="displayname()">Say Hello</button><br>
+    <p id="paragraph"></p>
+
+    <script>
+        function displayname() {
+            let text = document.getElementById("txtName").value;
+            let paragraph = document.getElementById("paragraph");
+            paragraph.innerText = "Hello " + text + "!";
+        }
+    </script>
+</body>
+
+</html>
