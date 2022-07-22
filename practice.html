@@ -1,0 +1,25 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+    <input type="text" id="txt1"><br>
+    <button onclick="paste()">Copy</button><br>
+    <input type="text" id="txt2">
+    <div id="myDiv"></div>
+    <script>
+
+        function paste() {
+            let copy = document.getElementById("txt1").value;
+            document.getElementById("txt2").value = copy;
+            document.getElementById("myDiv").innerText = copy;
+
+        }
+
+    </script>
+</body>
+
+</html>
